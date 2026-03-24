@@ -1,8 +1,11 @@
 from config import ( AUGMENTING_MODEL, MODEL, SYSTEM_PROMPT, HEAD_PROMPT, OLLAMA_URL )
-
+import httpx 
+from typing import List, Dict  
 # Model Related
 import ollama
 from ollama import chat
+
+_http_client = httpx.AsyncClient(timeout=120.0)
 
 async def augment_prompt(model: str, prompt: str) -> str:
     payload = {
@@ -12,7 +15,7 @@ async def augment_prompt(model: str, prompt: str) -> str:
         ],
     }
 
-    resp = await client.post(OLLAMA_URL, json=payload)
+    resp = await _http_client.post(OLLAMA_URL, json=payload)
     resp.raise_for_status()
     data = resp.json()
     return data["message"]["content"]
@@ -37,4 +40,4 @@ async def take_the_request(event):
         {"role": "user", "content": await augment_prompt(AUGMENTING_MODEL, prompt)}
     ]
 
-    await ask_ollama(MODEL, message)
+    await ask_ollama(_http_client, MODEL, message)
