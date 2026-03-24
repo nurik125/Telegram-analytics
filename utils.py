@@ -77,7 +77,7 @@ class OllamaService:
         self.url = OLLAMA_URL
 
     async def augment_prompt(self, prompt: str) -> str:
-        prompt += HEAD_PROMPT + prompt
+        prompt = HEAD_PROMPT + prompt
         r = await self.client.post(
             self.url,
             json={
