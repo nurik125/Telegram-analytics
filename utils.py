@@ -1,4 +1,6 @@
 import ollama
+import qrcode
+async def qr_auth(client):
 from ollama import ChatResponse
 from typing import Iterator, Sequence
 from tqdm import tqdm
