@@ -89,7 +89,7 @@ class OllamaService:
         return r.json()["message"]["content"]
 
     async def ask(self, prompt: str) -> str:
-        r = await client.post(
+        r = await self.client.post(
             self.url,
             json={
                 "model": MODEL,
