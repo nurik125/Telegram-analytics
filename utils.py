@@ -1,6 +1,5 @@
 import ollama
 import qrcode
-async def qr_auth(client):
 from ollama import ChatResponse
 from typing import Iterator, Sequence
 from tqdm import tqdm
@@ -53,7 +52,7 @@ def RemoveTheModel(model: str) -> None:
   else:
       print(f"{model} not found")
 
-async def qr_auth():
+async def qr_auth(client):
     print("You have not authentificated yet!")
     print("Generating QR code...")
 
