@@ -1,4 +1,4 @@
-# Telegram Client API bot that does automated tasks for you.. Just ask bruh!
+# Telegram Assitant
 
 Your telegram bot analytic that performs essential tasks for you. Too busy tracking stuff that is going on in the telegram groups? Just ask the bot to track your channel at it does!
 
